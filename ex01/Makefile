@@ -6,12 +6,12 @@
 #    By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 09:24:48 by jrinna            #+#    #+#              #
-#    Updated: 2022/10/06 14:21:40 by jrinna           ###   ########lyon.fr    #
+#    Updated: 2022/10/06 14:21:36 by jrinna           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-LST_SRC := Bureaucrat.cpp main.cpp
-LST_INC := Bureaucrat.hpp 
+LST_SRC := Bureaucrat.cpp Form.cpp main.cpp
+LST_INC := Bureaucrat.hpp Form.hpp 
 LST_OBJ := ${LST_SRC:.cpp=.o}
 
 DIR_SRC := source
@@ -24,7 +24,7 @@ INC := ${addprefix ${DIR_INC}/,${LST_INC}}
 
 CC := c++ -std=c++98
 CFLAGS := -Wall -Wextra -Werror #-fsanitize=address -g3
-NAME := Bureaucrat
+NAME := Formulaire
 
 all : ${NAME}
 

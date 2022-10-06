@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:24:42 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/06 14:37:36 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/10/06 14:05:06 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,9 @@ Bureaucrat::Bureaucrat( const Bureaucrat & src ) : _grade(src.getGrade()) {
 	return;
 }
 
-Bureaucrat::Bureaucrat( const string name, int grade ) : _name(name), _grade(150) {
+Bureaucrat::Bureaucrat( const string name, int grade ) : _name(name), _grade(grade) {
 
-	if (grade < 1)
-	{
-		throw Bureaucrat::GradeTooHighExeption();
-	}
-	else if (grade > 150)
-	{
-		throw Bureaucrat::GradeTooLowExeption();
-	}
-	else
-	{
-		cout << "NAMED Bureaucrat constructor called" << endl;
-		this->_grade = grade;
-	}
+	cout << "NAMED Bureaucrat constructor called" << endl;
 	return;
 }
 
