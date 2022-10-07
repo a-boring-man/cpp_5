@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:24:42 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/07 08:36:03 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/10/07 11:25:19 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Bureaucrat::Bureaucrat( const Bureaucrat & src ) : _grade(src.getGrade()) {
 	return;
 }
 
-Bureaucrat::Bureaucrat( const string name, int grade ) : _name(name), _grade(150) {
+Bureaucrat::Bureaucrat( const string name, int grade ) : _name(name) {
 
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighExeption();
@@ -95,6 +95,13 @@ void	Bureaucrat::unpromote( int i ) {
 		throw Bureaucrat::GradeTooLowExeption();
 	this->_grade += i;
 	cout << this->getName() << " has been unpromoted, his/her grade is now : " << this->getGrade() << endl;
+	return;
+}
+
+void	Bureaucrat::signForm( Form & form ) const {
+
+	cout << this->getName() << " sign : " << form.getName() << endl;
+	form.setSigned();
 	return;
 }
 
