@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:24:42 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/06 14:05:06 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/10/07 08:36:03 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,14 @@ Bureaucrat::Bureaucrat( const Bureaucrat & src ) : _grade(src.getGrade()) {
 	return;
 }
 
-Bureaucrat::Bureaucrat( const string name, int grade ) : _name(name), _grade(grade) {
+Bureaucrat::Bureaucrat( const string name, int grade ) : _name(name), _grade(150) {
 
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighExeption();
+	if (grade > 150)
+		throw Bureaucrat::GradeTooLowExeption();
 	cout << "NAMED Bureaucrat constructor called" << endl;
+	this->_grade = grade;
 	return;
 }
 
@@ -78,28 +83,18 @@ std::ostream &			operator<<( std::ostream & o, Bureaucrat const & B )
 void	Bureaucrat::promote( int i ) {
 
 	if (this->_grade - i < 1)
-	{
 		throw Bureaucrat::GradeTooHighExeption();
-	}
-	else
-	{
-		this->_grade -= i;
-		cout << this->getName() << " has been promoted, his/her grade is now : " << this->getGrade() << endl;
-	}
+	this->_grade -= i;
+	cout << this->getName() << " has been promoted, his/her grade is now : " << this->getGrade() << endl;
 	return;
 }
 
 void	Bureaucrat::unpromote( int i ) {
 
 	if (this->_grade + i > 150)
-	{
 		throw Bureaucrat::GradeTooLowExeption();
-	}
-	else
-	{
-		this->_grade += i;
-		cout << this->getName() << " has been unpromoted, his/her grade is now : " << this->getGrade() << endl;
-	}
+	this->_grade += i;
+	cout << this->getName() << " has been unpromoted, his/her grade is now : " << this->getGrade() << endl;
 	return;
 }
 
