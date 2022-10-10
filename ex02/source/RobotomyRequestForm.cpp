@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 13:52:19 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/07 15:12:13 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/10/10 11:56:30 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 0, 72,
 	return;
 }
 
-RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src ) : _target(src.getTarget()){
+RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src ) : AForm("RobotomyRequestForm", 0, 72, 45), _target(src.getTarget()){
 
 	cout << "RobotomyRequestForm constructor called" << endl;
 	setSigned(src.getSigned());
 	return;
 }
 
-RobotomyRequestForm::RobotomyRequestForm( const string target ) : AForm("RobotomyRequestForm", 0, 25, 5), _target(target) {
+RobotomyRequestForm::RobotomyRequestForm( const string target ) : AForm("RobotomyRequestForm", 0, 72, 45), _target(target) {
 
 	cout << "TARGETED RobotomyRequestForm constructor called" << endl;
 	return;
@@ -53,14 +53,16 @@ RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm con
 {
 	if ( this != &rhs )
 	{
+		cout << "ASSIGNMENT OPERATOR CALLED" << endl;
 		this->setSigned(rhs.getSigned());
+		this->setTarget(rhs.getTarget());
 	}
 	return *this;
 }
 
 std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & F )
 {
-	o << "Name : " << F.getName() << endl << "Signed status : " << F.getSigned() << endl << "Grade to signed : " << F.getGTS() << endl << "Grade to execute : " << F.getGTE() << endl;
+	o << "Name : " << F.getName() << endl << "Signed status : " << F.getSigned() << endl << "Grade to signed : " << F.getGTS() << endl << "Grade to execute : " << F.getGTE() << endl << "Target : " << F.getTarget() << endl;
 	return o;
 }
 
@@ -69,6 +71,15 @@ std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & F )
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void	RobotomyRequestForm::execute( Bureaucrat const & executor ) const {
+
+	this->CheckExecuteCondition(executor);
+	if (rand() % 2)
+		cout << this->getTarget() << " has been robotomized" << endl;
+	else
+		cout << this->getTarget() << " Failed to be robotomized" << endl;
+	return;
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

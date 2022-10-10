@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 13:51:48 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/10 08:52:21 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/10/10 11:13:38 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <iostream>
 # include <string>
 # include "AForm.hpp"
+# include <cstdlib>
 
 using std::cout;
 using std::endl;
@@ -36,6 +37,8 @@ class RobotomyRequestForm : public AForm
 
 		const string	getTarget() const;
 		void			setTarget( const string target );
+
+		void	execute( Bureaucrat const & executor ) const;
 
 	private:
 

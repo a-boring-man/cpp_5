@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 13:52:02 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/10 08:52:28 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/10/10 11:25:46 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <iostream>
 # include <string>
 # include "AForm.hpp"
+# include <fstream>
 
 using std::cout;
 using std::endl;
@@ -36,6 +37,8 @@ class ShrubberyCreationForm : public AForm
 
 		const string	getTarget() const;
 		void			setTarget( const string target );
+
+		void	execute( Bureaucrat const & executor ) const;
 
 	private:
 
