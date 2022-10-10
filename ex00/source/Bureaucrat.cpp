@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:24:42 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/07 08:39:19 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/10/10 10:59:55 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	Bureaucrat::promote( int i ) {
 
 	if (this->_grade - i < 1)
 		throw Bureaucrat::GradeTooHighExeption();
+	if (i < 1)
+		throw Bureaucrat::GradeTooLowExeption();
 	this->_grade -= i;
 	cout << this->getName() << " has been promoted, his/her grade is now : " << this->getGrade() << endl;
 	return;
@@ -93,6 +95,8 @@ void	Bureaucrat::unpromote( int i ) {
 
 	if (this->_grade + i > 150)
 		throw Bureaucrat::GradeTooLowExeption();
+	if (i < 1)
+		throw Bureaucrat::GradeTooHighExeption();
 	this->_grade += i;
 	cout << this->getName() << " has been unpromoted, his/her grade is now : " << this->getGrade() << endl;
 	return;

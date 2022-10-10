@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,25 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Form.hpp"
+#include "../include/AForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Form::Form() : _name("random formular"), _signed(0), _gradetosigne(1), _gradetoexecute(1) {
+AForm::AForm() : _name("random AFormular"), _signed(0), _gradetosigne(1), _gradetoexecute(1) {
 
-	cout << "DEFAULT Formular constructor called" << endl;
+	cout << "DEFAULT AFormular constructor called" << endl;
 	return;
 }
 
-Form::Form( const Form & src ) : _name(src.getName()), _signed(src.getSigned()), _gradetosigne(src.getGTS()), _gradetoexecute(src.getGTE()) {
+AForm::AForm( const AForm & src ) : _name(src.getName()), _signed(src.getSigned()), _gradetosigne(src.getGTS()), _gradetoexecute(src.getGTE()) {
 
-	cout << "COPY Formular constructor called" << endl;
+	cout << "COPY AFormular constructor called" << endl;
 	return;
 }
 
-Form::Form( const string name, bool signedd, const int GTS, const int GTE ) : _name(name), _signed(signedd), _gradetosigne(GTS), _gradetoexecute(GTE) {
+AForm::AForm( const string name, bool signedd, const int GTS, const int GTE ) : _name(name), _signed(signedd), _gradetosigne(GTS), _gradetoexecute(GTE) {
 
 	if (GTS > 150 || GTE > 150)
 		throw GradeTooLowExeption();
@@ -41,9 +41,9 @@ Form::Form( const string name, bool signedd, const int GTS, const int GTE ) : _n
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Form::~Form() {
+AForm::~AForm() {
 
-	cout << "Form destructor called" << endl;
+	cout << "AForm destructor called" << endl;
 	return;
 }
 
@@ -52,7 +52,7 @@ Form::~Form() {
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Form &				Form::operator=( Form const & rhs )
+AForm &				AForm::operator=( AForm const & rhs )
 {
 	if ( this != &rhs )
 	{
@@ -69,7 +69,7 @@ Form &				Form::operator=( Form const & rhs )
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, Form const & F )
+std::ostream &			operator<<( std::ostream & o, AForm const & F )
 {
 	o << "Name : " << F.getName() << endl << "Signed status : " << F.getSigned() << endl << "Grade to signed : " << F.getGTS() << endl << "Grade to execute : " << F.getGTE() << endl;
 	return o;
@@ -79,7 +79,7 @@ std::ostream &			operator<<( std::ostream & o, Form const & F )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	Form::beSigned(Bureaucrat & employee) {
+void	AForm::beSigned(Bureaucrat & employee) {
 
 	if (employee.getGrade() > this->getGTS())
 	{
@@ -90,31 +90,40 @@ void	Form::beSigned(Bureaucrat & employee) {
 	return;
 }
 
+void	AForm::CheckExecuteCondition( Bureaucrat const & executor ) const {
+
+	if (!this->getSigned())
+		throw FormNotSigned();
+	if (executor.getGrade() > this->getGTE())
+		throw GradeTooLowExeption();
+	return;
+}
+
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-const string	Form::getName( void ) const {
+const string	AForm::getName( void ) const {
 
 	return (this->_name);
 }
 
-bool			Form::getSigned( void ) const {
+bool			AForm::getSigned( void ) const {
 
 	return (this->_signed);
 }
 
-int		Form::getGTS( void ) const {
+int		AForm::getGTS( void ) const {
 
 	return (this->_gradetosigne);
 }
 
-int		Form::getGTE( void ) const {
+int		AForm::getGTE( void ) const {
 
 	return (this->_gradetoexecute);
 }
 
-void	Form::setSigned( int i ) {
+void	AForm::setSigned( int i ) {
 
 	this->_signed = i;
 	return;

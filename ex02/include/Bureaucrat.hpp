@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 09:24:39 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/07 09:33:32 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/10/10 10:57:17 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 using std::cout;
 using std::endl;
 using std::string;
 
-class	Form;
+class	AForm;
 
 class Bureaucrat
 {
@@ -54,7 +54,8 @@ class Bureaucrat
 				virtual const char* what() const throw(){return ("Grade is too low");} 
 		};
 		
-		void	signForm(Form & form) const;
+		void	signForm( AForm & form ) const;
+		void	executeForm( AForm const & form ) const;
 
 	private:
 

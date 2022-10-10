@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 13:52:02 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/07 14:09:49 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/10/10 08:52:28 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,32 @@
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class ShrubberyCreationForm : public Form
+using std::cout;
+using std::endl;
+using std::string;
+
+class AForm;
+
+class ShrubberyCreationForm : public AForm
 {
 
 	public:
 
 		ShrubberyCreationForm();
 		ShrubberyCreationForm( ShrubberyCreationForm const & src );
+		ShrubberyCreationForm( const string target );
 		~ShrubberyCreationForm();
 
 		ShrubberyCreationForm &		operator=( ShrubberyCreationForm const & rhs );
 
+		const string	getTarget() const;
+		void			setTarget( const string target );
+
 	private:
+
+		const string	_target;
 
 };
 

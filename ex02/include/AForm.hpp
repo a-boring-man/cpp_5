@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -23,17 +23,17 @@ using std::string;
 
 class	Bureaucrat;
 
-class Form
+class AForm
 {
 
 	public:
 
-		Form();
-		Form( Form const & src );
-		Form( const string name, bool signedd, const int GTS, const int GTE );
-		~Form();
+		AForm();
+		AForm( AForm const & src );
+		AForm( const string name, bool signedd, const int GTS, const int GTE );
+		~AForm();
 
-		Form &		operator=( Form const & rhs );
+		AForm &		operator=( AForm const & rhs );
 
 		class	GradeTooHighExeption : public std::exception {
 
@@ -48,6 +48,13 @@ class Form
 
 				virtual const char* what() const throw(){return ("Grade is too low");} 
 		};
+
+		class	FormNotSigned : public std::exception {
+
+			public:
+
+				virtual const char* what() const throw(){return ("the Form wasn't signed");} 
+		};
 		
 		const string	getName()	const	;
 		bool			getSigned() const	;
@@ -55,7 +62,9 @@ class Form
 		int				getGTS() 	const	;
 		int				getGTE() 	const	;
 
-		void	beSigned(Bureaucrat & employee);
+		void			beSigned( Bureaucrat & employee );
+		void			CheckExecuteCondition( Bureaucrat const & executor ) const;
+		virtual void	execute( Bureaucrat const & executor ) const = 0;
 
 	private:
 
@@ -66,4 +75,4 @@ class Form
 
 };
 
-std::ostream &			operator<<( std::ostream & o, Form const & F );
+std::ostream &			operator<<( std::ostream & o, AForm const & F );

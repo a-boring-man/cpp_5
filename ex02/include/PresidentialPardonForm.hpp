@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 13:51:12 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/07 14:10:00 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/10/10 08:56:48 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,34 @@
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class PresidentialPardonForm : public Form
+using std::cout;
+using std::endl;
+using std::string;
+
+class AForm;
+
+class PresidentialPardonForm : public AForm
 {
 
 	public:
 
 		PresidentialPardonForm();
 		PresidentialPardonForm( PresidentialPardonForm const & src );
+		PresidentialPardonForm( const string target );
 		~PresidentialPardonForm();
 
 		PresidentialPardonForm &		operator=( PresidentialPardonForm const & rhs );
 
+		const string	getTarget() const;
+		void			setTarget( const string target );
+
+		void	execute( Bureaucrat const & executor ) const;
+
 	private:
+
+		const string	_target;
 
 };
 

@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 13:51:48 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/07 14:09:38 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/10/10 08:52:21 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,32 @@
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class RobotomyRequestForm : public Form
+using std::cout;
+using std::endl;
+using std::string;
+
+class AForm;
+
+class RobotomyRequestForm : public AForm
 {
 
 	public:
 
 		RobotomyRequestForm();
 		RobotomyRequestForm( RobotomyRequestForm const & src );
+		RobotomyRequestForm( const string target );
 		~RobotomyRequestForm();
 
 		RobotomyRequestForm &		operator=( RobotomyRequestForm const & rhs );
 
+		const string	getTarget() const;
+		void			setTarget( const string target );
+
 	private:
 
+		const string	_target;
 
 };
 
