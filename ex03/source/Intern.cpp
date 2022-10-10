@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:36:42 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/10 14:39:34 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2022/10/10 15:07:24 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ Intern::~Intern() {
 Intern &				Intern::operator=( Intern const & rhs )
 {
 	(void)rhs;
+	cout << "they are already the same..." << endl;
 	return *this;
 }
 
@@ -79,7 +80,7 @@ AForm*	Intern::makeForm( string name, string target ) const {
 			form = new ShrubberyCreationForm(target);
 			break;
 		default:
-			cout << "nor form matching the request";
+			cout << "nor form matching the request" << endl;
 	}
 	if (i < 3)
 		cout << "Intern creates : " << name << " form" << endl;

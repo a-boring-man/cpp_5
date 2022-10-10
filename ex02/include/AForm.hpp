@@ -31,7 +31,7 @@ class AForm
 		AForm();
 		AForm( AForm const & src );
 		AForm( const string name, bool signedd, const int GTS, const int GTE );
-		~AForm();
+		virtual ~AForm();
 
 		AForm &		operator=( AForm const & rhs );
 
