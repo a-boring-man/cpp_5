@@ -6,7 +6,7 @@
 /*   By: jrinna <jrinna@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 13:52:22 by jrinna            #+#    #+#             */
-/*   Updated: 2022/10/10 12:46:37 by jrinna           ###   ########lyon.fr   */
+/*   Updated: 2023/07/19 11:45:16 by jrinna           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & F )
 void	ShrubberyCreationForm::execute( Bureaucrat const & executor ) const {
 
 	this->CheckExecuteCondition(executor);
-	std::fstream	file (this->getTarget() + "_shrubbery", std::ios::out);
+	std::fstream	file ((this->getTarget() + "_shrubbery").c_str(), std::ios::out);
 	file << "                                                                                                                                                                                                         " << endl <<"\
                                                                                                                                                                                                         " << endl <<"\
                                                                                                                                                                                                         " << endl <<"\
